@@ -13,7 +13,7 @@ CIPA is a Big Data Analytics tool that can be used to measure the interest of tw
 
 1.Fill in Twitter credentials
 
-2. use the following command 
+2.Use the following command 
     sbt/sbt run  
 
 
