@@ -1,0 +1,26 @@
+
+name := "twitter-analyser"
+
+scalaVersion := "2.10.4"
+
+libraryDependencies ++= Seq(
+  "org.apache.spark" % "spark-core_2.10" % "1.1.1",
+  "org.apache.spark" % "spark-streaming_2.10" % "1.1.1",
+  "org.apache.spark" % "spark-streaming-twitter_2.10" % "1.1.1",
+  "org.apache.spark" % "spark-mllib_2.10" % "1.1.1",
+  "org.twitter4j" % "twitter4j-core" % "3.0.3")
+
+resolvers ++= Seq(
+  "Akka Repository" at "http://repo.akka.io/releases/",
+  "Twitter4j" at "http://twitter4j.org/maven2/",
+  "Spark RC5" at "https://repository.apache.org/content/repositories/orgapachespark-051/",
+  "Spray Repository" at "http://repo.spray.cc/")
+
+
+
+
+
+
+
+
+

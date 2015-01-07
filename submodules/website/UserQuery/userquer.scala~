@@ -1,0 +1,33 @@
+import org.apache.log4j.Logger
+import org.apache.log4j.Level
+import org.apache.spark.SparkContext._
+import org.apache.spark._
+import org.apache.spark.SparkConf
+import java.io.File
+import scala.io.Source
+import scala.collection.mutable.ArrayBuffer
+object userquer {
+  def main(args: Array[String]) {
+    
+     Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
+    Logger.getLogger("org.apache.spark.storage.BlockManager").setLevel(Level.ERROR)
+    
+    def recursiveListFiles(f: File): Array[File] = {
+      val these = f.listFiles
+      these ++ these.filter(_.isDirectory).flatMap(recursiveListFiles)
+    }
+    val myBigFileArray = recursiveListFiles(new File("/home/sathishbabu3/bdproject/spark-twitter-collection/tmp"))
+    val y = myBigFileArray.filter(_.getName.startsWith("par"))
+    val finalUserID = new ArrayBuffer[String]()
+    for(name<-y){
+	for(line <- Source.fromFile(name.toString).getLines()){
+        val parts= line.split(',')
+        if(parts(0).equals("1.0")){
+          finalUserID.append(parts(1))
+        }
+      }
+    }
+    finalUserID.foreach{ println}
+    
+  }
+}
